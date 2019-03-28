@@ -11,7 +11,14 @@ import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';
 
 export class ScrollableImage extends Component {
-
+    constructor(props){
+        super(props);
+        this.state = {
+            name: props.name,
+            src : props.src,
+            points : props.points,
+        }
+    }
     
     componentDidMount(){
         var extent = [0, 0, 1024, 968];
@@ -37,8 +44,7 @@ export class ScrollableImage extends Component {
               new ImageLayer({
                 source: new Static({
                   attributions: '© <a href="http://xkcd.com/license.html">xkcd</a>',
-                  //url: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-                  url: 'https://imgs.xkcd.com/comics/online_communities.png',
+                  url: this.state.src,
                   projection: projection,
                   imageExtent: extent
                 })
@@ -78,6 +84,10 @@ export class ScrollableImage extends Component {
         };
 
         addInteraction();
+    }
+
+    static getDerivedStateFromProps(props, state){
+        return null;
     }
 
     render() {
