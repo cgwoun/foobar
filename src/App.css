@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+#map {
+  border: #282c34 solid;
+  width: 600px;
+  height: 400px;
+  text-align: center;
+  display: inline-block;
+}
